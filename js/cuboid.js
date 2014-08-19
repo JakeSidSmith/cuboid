@@ -171,6 +171,22 @@
       return newCuboid;
     };
 
+    newCuboid.rotate = function (rx, ry, rz) {
+      transforms.rx += rx !== undefined ? rx : 0;
+      transforms.ry += ry !== undefined ? ry : 0;
+      transforms.rz += rz !== undefined ? rz : 0;
+      updateCuboid();
+      return newCuboid;
+    };
+
+    newCuboid.rotation = function (rx, ry, rz) {
+      transforms.rx = rx !== undefined ? rx : 0;
+      transforms.ry = ry !== undefined ? ry : 0;
+      transforms.rz = rz !== undefined ? rz : 0;
+      updateCuboid();
+      return newCuboid;
+    };
+
     newCuboid.move3d = function (x, y, z) {
       transforms.x += x !== undefined ? x : 0;
       transforms.y += y !== undefined ? y : 0;

@@ -9,7 +9,7 @@ $(document).ready(function () {
   setInterval(function () {
     myCuboid.rotateX(1)
       .rotateY(2)
-      .translateY(Math.cos(myCuboid.rotateY() / 360 * 12.5) * 100)
-      .translateX(Math.sin(myCuboid.rotateY() / 360 * 12.5) * 100);
+      .translateY(Math.cos(myCuboid.rotateY() / 360 * 25 / 4) * 100)
+      .translateX(Math.sin(myCuboid.rotateY() / 360 * 25 / 4) * 100);
   }, 1000/60);
 });

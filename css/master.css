@@ -18,7 +18,18 @@ html {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #AAA;
+  background-color: gray;
+  overflow: hidden;
+  -webkit-perspective-origin: 50% 50%;
+  -moz-perspective-origin: 50% 50%;
+  -ms-perspective-origin: 50% 50%;
+  -o-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -ms-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
 }
 .cuboid {
   position: absolute;
@@ -27,4 +38,174 @@ html {
   top: 50%;
   left: 50%;
   overflow: visible;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.cuboid .front,
+.cuboid .back,
+.cuboid .top,
+.cuboid .bottom,
+.cuboid .left,
+.cuboid .right {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: -50px;
+  background-color: white;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.cuboid .front .shading,
+.cuboid .back .shading,
+.cuboid .top .shading,
+.cuboid .bottom .shading,
+.cuboid .left .shading,
+.cuboid .right .shading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.cuboid .front:nth-child(1) .shading,
+.cuboid .back:nth-child(1) .shading,
+.cuboid .top:nth-child(1) .shading,
+.cuboid .bottom:nth-child(1) .shading,
+.cuboid .left:nth-child(1) .shading,
+.cuboid .right:nth-child(1) .shading {
+  -moz-opacity: 0.1;
+  -khtml-opacity: 0.1;
+  -webkit-opacity: 0.1;
+  opacity: 0.1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=10);
+  filter: alpha(opacity=10);
+}
+.cuboid .front:nth-child(2) .shading,
+.cuboid .back:nth-child(2) .shading,
+.cuboid .top:nth-child(2) .shading,
+.cuboid .bottom:nth-child(2) .shading,
+.cuboid .left:nth-child(2) .shading,
+.cuboid .right:nth-child(2) .shading {
+  -moz-opacity: 0.2;
+  -khtml-opacity: 0.2;
+  -webkit-opacity: 0.2;
+  opacity: 0.2;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+  filter: alpha(opacity=20);
+}
+.cuboid .front:nth-child(3) .shading,
+.cuboid .back:nth-child(3) .shading,
+.cuboid .top:nth-child(3) .shading,
+.cuboid .bottom:nth-child(3) .shading,
+.cuboid .left:nth-child(3) .shading,
+.cuboid .right:nth-child(3) .shading {
+  -moz-opacity: 0.3;
+  -khtml-opacity: 0.3;
+  -webkit-opacity: 0.3;
+  opacity: 0.3;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=30);
+  filter: alpha(opacity=30);
+}
+.cuboid .front:nth-child(4) .shading,
+.cuboid .back:nth-child(4) .shading,
+.cuboid .top:nth-child(4) .shading,
+.cuboid .bottom:nth-child(4) .shading,
+.cuboid .left:nth-child(4) .shading,
+.cuboid .right:nth-child(4) .shading {
+  -moz-opacity: 0.4;
+  -khtml-opacity: 0.4;
+  -webkit-opacity: 0.4;
+  opacity: 0.4;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+  filter: alpha(opacity=40);
+}
+.cuboid .front:nth-child(5) .shading,
+.cuboid .back:nth-child(5) .shading,
+.cuboid .top:nth-child(5) .shading,
+.cuboid .bottom:nth-child(5) .shading,
+.cuboid .left:nth-child(5) .shading,
+.cuboid .right:nth-child(5) .shading {
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  -webkit-opacity: 0.5;
+  opacity: 0.5;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+  filter: alpha(opacity=50);
+}
+.cuboid .front:nth-child(6) .shading,
+.cuboid .back:nth-child(6) .shading,
+.cuboid .top:nth-child(6) .shading,
+.cuboid .bottom:nth-child(6) .shading,
+.cuboid .left:nth-child(6) .shading,
+.cuboid .right:nth-child(6) .shading {
+  -moz-opacity: 0.6;
+  -khtml-opacity: 0.6;
+  -webkit-opacity: 0.6;
+  opacity: 0.6;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+  filter: alpha(opacity=60);
+}
+.cuboid .front {
+  -webkit-transform: translateZ(50px);
+  -moz-transform: translateZ(50px);
+  -ms-transform: translateZ(50px);
+  -o-transform: translateZ(50px);
+  transform: translateZ(50px);
+}
+.cuboid .back {
+  -webkit-transform: rotateY(180deg) translateZ(50px);
+  -moz-transform: rotateY(180deg) translateZ(50px);
+  -ms-transform: rotateY(180deg) translateZ(50px);
+  -o-transform: rotateY(180deg) translateZ(50px);
+  transform: rotateY(180deg) translateZ(50px);
+}
+.cuboid .top {
+  -webkit-transform: rotateX(90deg) translateZ(50px);
+  -moz-transform: rotateX(90deg) translateZ(50px);
+  -ms-transform: rotateX(90deg) translateZ(50px);
+  -o-transform: rotateX(90deg) translateZ(50px);
+  transform: rotateX(90deg) translateZ(50px);
+}
+.cuboid .bottom {
+  -webkit-transform: rotateX(-90deg) translateZ(50px);
+  -moz-transform: rotateX(-90deg) translateZ(50px);
+  -ms-transform: rotateX(-90deg) translateZ(50px);
+  -o-transform: rotateX(-90deg) translateZ(50px);
+  transform: rotateX(-90deg) translateZ(50px);
+}
+.cuboid .left {
+  -webkit-transform: rotateY(-90deg) translateZ(50px);
+  -moz-transform: rotateY(-90deg) translateZ(50px);
+  -ms-transform: rotateY(-90deg) translateZ(50px);
+  -o-transform: rotateY(-90deg) translateZ(50px);
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.cuboid .right {
+  -webkit-transform: rotateY(90deg) translateZ(50px);
+  -moz-transform: rotateY(90deg) translateZ(50px);
+  -ms-transform: rotateY(90deg) translateZ(50px);
+  -o-transform: rotateY(90deg) translateZ(50px);
+  transform: rotateY(90deg) translateZ(50px);
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotateY(0deg) rotateX(0deg);
+    -moz-transform: rotateY(0deg) rotateX(0deg);
+    -ms-transform: rotateY(0deg) rotateX(0deg);
+    -o-transform: rotateY(0deg) rotateX(0deg);
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(720deg) rotateX(360deg);
+    -moz-transform: rotateY(720deg) rotateX(360deg);
+    -ms-transform: rotateY(720deg) rotateX(360deg);
+    -o-transform: rotateY(720deg) rotateX(360deg);
+    transform: rotateY(720deg) rotateX(360deg);
+  }
 }

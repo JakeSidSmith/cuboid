@@ -22,32 +22,33 @@
       .append($('<div>').addClass('left').append($('<div>').addClass('shading')))
       .append($('<div>').addClass('right').append($('<div>').addClass('shading')));
 
-    newCuboid.transforms = {};
-    newCuboid.transforms.x = x || 0;
-    newCuboid.transforms.y = y || 0;
-    newCuboid.transforms.z = z || 0;
-    newCuboid.transforms.w = w || 0;
-    newCuboid.transforms.h = h || 0;
-    newCuboid.transforms.d = d || 0;
-    newCuboid.transforms.rx = rx || 0;
-    newCuboid.transforms.ry = ry || 0;
-    newCuboid.transforms.rz = rz || 0;
+    var transforms = {
+      x: x || 0,
+      y: y || 0,
+      z: z || 0,
+      w: w || 0,
+      h: h || 0,
+      d: d || 0,
+      rx: rx || 0,
+      ry: ry || 0,
+      rz: rz || 0
+    };
 
     var updateCuboid = function () {
       newCuboid.css('transform', function () {
-        return 'translate3d(' + [newCuboid.transforms.x + 'px', newCuboid.transforms.y + 'px', newCuboid.transforms.z + 'px'].join(',') + ')' +
-          'rotateX(' + newCuboid.transforms.rx + 'deg)' +
-          'rotateY(' + newCuboid.transforms.ry + 'deg)' +
-          'rotateZ(' + newCuboid.transforms.rz + 'deg)'
+        return 'translate3d(' + [transforms.x + 'px', transforms.y + 'px', transforms.z + 'px'].join(',') + ')' +
+          'rotateX(' + transforms.rx + 'deg)' +
+          'rotateY(' + transforms.ry + 'deg)' +
+          'rotateZ(' + transforms.rz + 'deg)'
       }());
     };
 
     newCuboid.rotateX = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.rx += num;
-        newCuboid.transforms.rx %= 360;
+        transforms.rx += num;
+        transforms.rx %= 360;
       } else {
-        return newCuboid.transforms.rx;
+        return transforms.rx;
       }
       updateCuboid();
       return newCuboid;
@@ -55,10 +56,10 @@
 
     newCuboid.rotateY = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.ry += num;
-        newCuboid.transforms.ry %= 360;
+        transforms.ry += num;
+        transforms.ry %= 360;
       } else {
-        return newCuboid.transforms.ry;
+        return transforms.ry;
       }
       updateCuboid();
       return newCuboid;
@@ -66,10 +67,10 @@
 
     newCuboid.rotateZ = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.rz += num;
-        newCuboid.transforms.rz %= 360;
+        transforms.rz += num;
+        transforms.rz %= 360;
       } else {
-        return newCuboid.transforms.rz;
+        return transforms.rz;
       }
       updateCuboid();
       return newCuboid;
@@ -77,10 +78,10 @@
 
     newCuboid.rotationX = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.rx = num;
-        newCuboid.transforms.rx %= 360;
+        transforms.rx = num;
+        transforms.rx %= 360;
       } else {
-        return newCuboid.transforms.rx;
+        return transforms.rx;
       }
       updateCuboid();
       return newCuboid;
@@ -88,10 +89,10 @@
 
     newCuboid.rotationY = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.ry = num;
-        newCuboid.transforms.ry %= 360;
+        transforms.ry = num;
+        transforms.ry %= 360;
       } else {
-        return newCuboid.transforms.ry;
+        return transforms.ry;
       }
       updateCuboid();
       return newCuboid;
@@ -99,10 +100,10 @@
 
     newCuboid.rotationZ = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.rz = num;
-        newCuboid.transforms.rz %= 360;
+        transforms.rz = num;
+        transforms.rz %= 360;
       } else {
-        return newCuboid.transforms.rz;
+        return transforms.rz;
       }
       updateCuboid();
       return newCuboid;
@@ -110,9 +111,9 @@
 
     newCuboid.translateX = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.x = num;
+        transforms.x = num;
       } else {
-        return newCuboid.transforms.x;
+        return transforms.x;
       }
       updateCuboid();
       return newCuboid;
@@ -120,9 +121,9 @@
 
     newCuboid.translateY = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.y = num;
+        transforms.y = num;
       } else {
-        return newCuboid.transforms.y;
+        return transforms.y;
       }
       updateCuboid();
       return newCuboid;
@@ -130,9 +131,9 @@
 
     newCuboid.translateZ = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.z = num;
+        transforms.z = num;
       } else {
-        return newCuboid.transforms.z;
+        return transforms.z;
       }
       updateCuboid();
       return newCuboid;
@@ -140,9 +141,9 @@
 
     newCuboid.moveX = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.x += num;
+        transforms.x += num;
       } else {
-        return newCuboid.transforms.x;
+        return transforms.x;
       }
       updateCuboid();
       return newCuboid;
@@ -151,9 +152,9 @@
 
     newCuboid.moveY = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.y += num;
+        transforms.y += num;
       } else {
-        return newCuboid.transforms.y;
+        return transforms.y;
       }
       updateCuboid();
       return newCuboid;
@@ -162,26 +163,26 @@
 
     newCuboid.moveZ = function (num) {
       if (num !== undefined) {
-        newCuboid.transforms.z += num;
+        transforms.z += num;
       } else {
-        return newCuboid.transforms.z;
+        return transforms.z;
       }
       updateCuboid();
       return newCuboid;
     };
 
     newCuboid.move3d = function (x, y, z) {
-      newCuboid.transforms.x += x !== undefined ? x : 0;
-      newCuboid.transforms.y += y !== undefined ? y : 0;
-      newCuboid.transforms.z += z !== undefined ? z : 0;
+      transforms.x += x !== undefined ? x : 0;
+      transforms.y += y !== undefined ? y : 0;
+      transforms.z += z !== undefined ? z : 0;
       updateCuboid();
       return newCuboid;
     };
 
     newCuboid.translate3d = function (x, y, z) {
-      newCuboid.transforms.x = x !== undefined ? x : 0;
-      newCuboid.transforms.y = y !== undefined ? y : 0;
-      newCuboid.transforms.z = z !== undefined ? z : 0;
+      transforms.x = x !== undefined ? x : 0;
+      transforms.y = y !== undefined ? y : 0;
+      transforms.z = z !== undefined ? z : 0;
       updateCuboid();
       return newCuboid;
     };

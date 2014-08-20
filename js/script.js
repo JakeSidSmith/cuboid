@@ -13,6 +13,6 @@ $(document).ready(function () {
       .translateY(Math.cos(yRotation / 360 * 25 / 4) * 100)
       .translateX(Math.sin(yRotation / 360 * 25 / 4) * 100)
       .width(Math.max(Math.abs(Math.cos(yRotation / 360 * 25 / 4) * 200), 100))
-      .height(Math.max(Math.abs(Math.cos(yRotation / 360 * 25 / 8) * 400), 100))
+      .height(Math.max(Math.abs(Math.cos(yRotation / 360 * 25 / 8) * 400), 100));
   }, 1000/60);
 });

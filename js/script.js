@@ -24,6 +24,5 @@ $(document).ready(function () {
     }
 
     myCuboid.scale(1.01, 1.01, 1.01);
->>>>>>> Stashed changes
   }, 1000/60);
 });

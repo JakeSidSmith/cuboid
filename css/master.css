@@ -51,10 +51,6 @@ html {
 .cuboid .left,
 .cuboid .right {
   position: absolute;
-  width: 100px;
-  height: 100px;
-  top: -50px;
-  left: -50px;
   background-color: white;
   -webkit-transform-origin: 50% 50%;
   -moz-transform-origin: 50% 50%;
@@ -150,48 +146,6 @@ html {
   opacity: 0.6;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
   filter: alpha(opacity=60);
-}
-.cuboid .front {
-  -webkit-transform: translateZ(50px);
-  -moz-transform: translateZ(50px);
-  -ms-transform: translateZ(50px);
-  -o-transform: translateZ(50px);
-  transform: translateZ(50px);
-}
-.cuboid .back {
-  -webkit-transform: rotateY(180deg) translateZ(50px);
-  -moz-transform: rotateY(180deg) translateZ(50px);
-  -ms-transform: rotateY(180deg) translateZ(50px);
-  -o-transform: rotateY(180deg) translateZ(50px);
-  transform: rotateY(180deg) translateZ(50px);
-}
-.cuboid .top {
-  -webkit-transform: rotateX(90deg) translateZ(50px);
-  -moz-transform: rotateX(90deg) translateZ(50px);
-  -ms-transform: rotateX(90deg) translateZ(50px);
-  -o-transform: rotateX(90deg) translateZ(50px);
-  transform: rotateX(90deg) translateZ(50px);
-}
-.cuboid .bottom {
-  -webkit-transform: rotateX(-90deg) translateZ(50px);
-  -moz-transform: rotateX(-90deg) translateZ(50px);
-  -ms-transform: rotateX(-90deg) translateZ(50px);
-  -o-transform: rotateX(-90deg) translateZ(50px);
-  transform: rotateX(-90deg) translateZ(50px);
-}
-.cuboid .left {
-  -webkit-transform: rotateY(-90deg) translateZ(50px);
-  -moz-transform: rotateY(-90deg) translateZ(50px);
-  -ms-transform: rotateY(-90deg) translateZ(50px);
-  -o-transform: rotateY(-90deg) translateZ(50px);
-  transform: rotateY(-90deg) translateZ(50px);
-}
-.cuboid .right {
-  -webkit-transform: rotateY(90deg) translateZ(50px);
-  -moz-transform: rotateY(90deg) translateZ(50px);
-  -ms-transform: rotateY(90deg) translateZ(50px);
-  -o-transform: rotateY(90deg) translateZ(50px);
-  transform: rotateY(90deg) translateZ(50px);
 }
 @-webkit-keyframes spin {
   0% {

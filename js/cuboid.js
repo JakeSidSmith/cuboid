@@ -34,6 +34,13 @@
       rz: rz || 0
     };
 
+    newCuboid.children('.front, .back')
+      .css('width', transforms.w).css('height', transforms.h);
+    newCuboid.children('.left, .right')
+      .css('width', transforms.d).css('height', transforms.h);
+    newCuboid.children('.top, .bottom')
+      .css('width', transforms.w).css('height', transforms.d);
+
     var updateTransforms = function () {
       newCuboid.css('transform', function () {
         return 'translate3d(' + [transforms.x + 'px', transforms.y + 'px', transforms.z + 'px'].join(',') + ')' +
@@ -172,6 +179,13 @@
     };
 
     newCuboid.rotate = function (rx, ry, rz) {
+      if (rx === undefined && ry === undefined && rz === undefined) {
+        return {
+          x: transforms.rx,
+          y: transforms.ry,
+          z: transforms.rz
+        };
+      }
       transforms.rx += rx !== undefined ? rx : 0;
       transforms.ry += ry !== undefined ? ry : 0;
       transforms.rz += rz !== undefined ? rz : 0;
@@ -180,6 +194,13 @@
     };
 
     newCuboid.rotation = function (rx, ry, rz) {
+      if (rx === undefined && ry === undefined && rz === undefined) {
+        return {
+          x: transforms.rx,
+          y: transforms.ry,
+          z: transforms.rz
+        };
+      }
       transforms.rx = rx !== undefined ? rx : 0;
       transforms.ry = ry !== undefined ? ry : 0;
       transforms.rz = rz !== undefined ? rz : 0;
@@ -188,6 +209,13 @@
     };
 
     newCuboid.move3d = function (x, y, z) {
+      if (x === undefined && y === undefined && z === undefined) {
+        return {
+          x: transforms.x,
+          y: transforms.y,
+          z: transforms.z
+        };
+      }
       transforms.x += x !== undefined ? x : 0;
       transforms.y += y !== undefined ? y : 0;
       transforms.z += z !== undefined ? z : 0;
@@ -196,6 +224,13 @@
     };
 
     newCuboid.translate3d = function (x, y, z) {
+      if (x === undefined && y === undefined && z === undefined) {
+        return {
+          x: transforms.x,
+          y: transforms.y,
+          z: transforms.z
+        };
+      }
       transforms.x = x !== undefined ? x : 0;
       transforms.y = y !== undefined ? y : 0;
       transforms.z = z !== undefined ? z : 0;

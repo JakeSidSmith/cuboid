@@ -26,15 +26,15 @@
       x: x || 0,
       y: y || 0,
       z: z || 0,
-      w: w || 0,
-      h: h || 0,
-      d: d || 0,
+      w: w !== undefined ? w : 100,
+      h: h !== undefined ? h : 100,
+      d: d !== undefined ? d : 100,
       rx: rx || 0,
       ry: ry || 0,
       rz: rz || 0
     };
 
-    var updateCuboid = function () {
+    var updateTransforms = function () {
       newCuboid.css('transform', function () {
         return 'translate3d(' + [transforms.x + 'px', transforms.y + 'px', transforms.z + 'px'].join(',') + ')' +
           'rotateX(' + transforms.rx + 'deg)' +
@@ -50,7 +50,7 @@
       } else {
         return transforms.rx;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -61,7 +61,7 @@
       } else {
         return transforms.ry;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -72,7 +72,7 @@
       } else {
         return transforms.rz;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -83,7 +83,7 @@
       } else {
         return transforms.rx;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -94,7 +94,7 @@
       } else {
         return transforms.ry;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -105,7 +105,7 @@
       } else {
         return transforms.rz;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -115,7 +115,7 @@
       } else {
         return transforms.x;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -125,7 +125,7 @@
       } else {
         return transforms.y;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -135,7 +135,7 @@
       } else {
         return transforms.z;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -145,7 +145,7 @@
       } else {
         return transforms.x;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -156,7 +156,7 @@
       } else {
         return transforms.y;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -167,7 +167,7 @@
       } else {
         return transforms.z;
       }
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -175,7 +175,7 @@
       transforms.rx += rx !== undefined ? rx : 0;
       transforms.ry += ry !== undefined ? ry : 0;
       transforms.rz += rz !== undefined ? rz : 0;
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -183,7 +183,7 @@
       transforms.rx = rx !== undefined ? rx : 0;
       transforms.ry = ry !== undefined ? ry : 0;
       transforms.rz = rz !== undefined ? rz : 0;
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -191,7 +191,7 @@
       transforms.x += x !== undefined ? x : 0;
       transforms.y += y !== undefined ? y : 0;
       transforms.z += z !== undefined ? z : 0;
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 
@@ -199,7 +199,7 @@
       transforms.x = x !== undefined ? x : 0;
       transforms.y = y !== undefined ? y : 0;
       transforms.z = z !== undefined ? z : 0;
-      updateCuboid();
+      updateTransforms();
       return newCuboid;
     };
 

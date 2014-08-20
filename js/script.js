@@ -8,11 +8,11 @@ $(document).ready(function () {
 
   setInterval(function () {
     var yRotation = myCuboid.rotateY();
-    myCuboid.rotateX(1)
-      .rotateY(2)
+    myCuboid.rotateX(0.5)
+      .rotateY(1)
       .translateY(Math.cos(yRotation / 360 * 25 / 4) * 100)
       .translateX(Math.sin(yRotation / 360 * 25 / 4) * 100)
-      .width(Math.max(Math.abs(Math.cos(yRotation / 360 * 25 / 4) * 100), 50))
-      .height(Math.max(Math.abs(Math.sin(yRotation / 360 * 25 / 8) * 200), 50))
+      .width(Math.max(Math.abs(Math.cos(yRotation / 360 * 25 / 4) * 200), 100))
+      .height(Math.max(Math.abs(Math.cos(yRotation / 360 * 25 / 8) * 400), 100))
   }, 1000/60);
 });

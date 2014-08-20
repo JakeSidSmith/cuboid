@@ -118,6 +118,27 @@
       return newCuboid;
     };
 
+    newCuboid.scale = function (w, h, d) {
+      if (w === undefined && h === undefined && d === undefined) {
+        return {
+          width: transforms.w,
+          height: transforms.h,
+          depth: transforms.d
+        };
+      }
+      if (w !== undefined) {
+        transforms.w *= w;
+      }
+      if (h !== undefined) {
+        transforms.h *= h;
+      }
+      if (d !== undefined) {
+        transforms.d *= d;
+      }
+      updateSizes();
+      return newCuboid;
+    };
+
     newCuboid.rotateX = function (num) {
       if (num !== undefined) {
         transforms.rx += num;

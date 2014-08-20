@@ -67,6 +67,57 @@
       }());
     };
 
+    newCuboid.width = function (num) {
+      if (num !== undefined) {
+        transforms.w = num;
+      } else {
+        return transforms.w;
+      }
+      updateSizes();
+      return newCuboid;
+    };
+
+    newCuboid.height = function (num) {
+      if (num !== undefined) {
+        transforms.h = num;
+      } else {
+        return transforms.h;
+      }
+      updateSizes();
+      return newCuboid;
+    };
+
+    newCuboid.depth = function (num) {
+      if (num !== undefined) {
+        transforms.d = num;
+      } else {
+        return transforms.d;
+      }
+      updateSizes();
+      return newCuboid;
+    };
+
+    newCuboid.size = function (w, h, d) {
+      if (w === undefined && h === undefined && d === undefined) {
+        return {
+          width: transforms.w,
+          height: transforms.h,
+          depth: transforms.d
+        };
+      }
+      if (w !== undefined) {
+        transforms.w = w;
+      }
+      if (h !== undefined) {
+        transforms.h = h;
+      }
+      if (d !== undefined) {
+        transforms.d = d;
+      }
+      updateSizes();
+      return newCuboid;
+    };
+
     newCuboid.rotateX = function (num) {
       if (num !== undefined) {
         transforms.rx += num;

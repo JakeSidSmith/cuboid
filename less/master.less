@@ -119,10 +119,6 @@ body, html {
     .left,
     .right {
         position: absolute;
-        width: 100px;
-        height: 100px;
-        top: -50px;
-        left: -50px;
         background-color: white;
         .transform-origin(50% 50%);
 
@@ -151,30 +147,6 @@ body, html {
         &:nth-child(6) .shading {
             .opacity(0.6);
         }
-    }
-
-    .front {
-        .transform(translateZ(50px));
-    }
-
-    .back {
-        .transform(rotateY(180deg) translateZ(50px));
-    }
-
-    .top {
-        .transform(rotateX(90deg) translateZ(50px));
-    }
-
-    .bottom {
-        .transform(rotateX(-90deg) translateZ(50px));
-    }
-
-    .left {
-        .transform(rotateY(-90deg) translateZ(50px));
-    }
-
-    .right {
-        .transform(rotateY(90deg) translateZ(50px));
     }
 }
 

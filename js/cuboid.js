@@ -14,14 +14,6 @@
   };
 
   cuboid.newCuboid = function (x, y, z, w, h, d, rx, ry, rz) {
-    var newCuboid = $('<div>').addClass('cuboid')
-      .append($('<div>').addClass('front').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('back').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('top').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('bottom').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('left').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('right').append($('<div>').addClass('shading')));
-
     var transforms = {
       x: x || 0,
       y: y || 0,
@@ -34,12 +26,37 @@
       rz: rz || 0
     };
 
-    newCuboid.children('.front, .back')
-      .css('width', transforms.w).css('height', transforms.h);
-    newCuboid.children('.left, .right')
-      .css('width', transforms.d).css('height', transforms.h);
-    newCuboid.children('.top, .bottom')
-      .css('width', transforms.w).css('height', transforms.d);
+    var newCuboid = $('<div>').addClass('cuboid')
+      .append($('<div>').addClass('front').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('back').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('top').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('bottom').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('left').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('right').append($('<div>').addClass('shading')));
+
+    var updateSizes = function () {
+      newCuboid.children('.front, .back')
+        .css('width', transforms.w).css('height', transforms.h);
+      newCuboid.children('.left, .right')
+        .css('width', transforms.d).css('height', transforms.h);
+      newCuboid.children('.top, .bottom')
+        .css('width', transforms.w).css('height', transforms.d);
+
+      newCuboid.children('.front')
+        .css('transform', 'translate3d(' + [-transforms.w / 2 + 'px', -transforms.h / 2 + 'px', transforms.d / 2 + 'px'].join(',') + ')');
+      newCuboid.children('.back')
+        .css('transform', 'translate3d(' + [-transforms.w / 2 + 'px', -transforms.h / 2 + 'px', -transforms.d / 2 + 'px'].join(',') + ') rotateY(180deg)');
+      newCuboid.children('.left')
+        .css('transform', 'translate3d(' + [-transforms.w / 2 -transforms.d / 2 + 'px', -transforms.h / 2 + 'px', 0 + 'px'].join(',') + ') rotateY(-90deg)');
+      newCuboid.children('.right')
+        .css('transform', 'translate3d(' + [transforms.w / 2 - transforms.d / 2 + 'px', -transforms.h / 2 + 'px', 0 + 'px'].join(',') + ') rotateY(90deg)');
+      newCuboid.children('.top')
+        .css('transform', 'translate3d(' + [-transforms.w / 2 + 'px', -transforms.d / 2 -transforms.h / 2 + 'px', 0 + 'px'].join(',') + ') rotateX(90deg)');
+      newCuboid.children('.bottom')
+        .css('transform', 'translate3d(' + [-transforms.w / 2 + 'px', -transforms.d / 2 + transforms.h / 2 + 'px', 0 + 'px'].join(',') + ') rotateX(-90deg)');
+    }
+
+    updateSizes();
 
     var updateTransforms = function () {
       newCuboid.css('transform', function () {

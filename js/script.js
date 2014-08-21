@@ -4,9 +4,9 @@ var myCuboid;
 
 $(document).ready(function () {
   myCuboid = cuboid.newCuboid(0, 0, 0, 100, 100, 100);
-  $('.viewport').append(myCuboid);
+  $('.camera').append(myCuboid);
 
-  setInterval(function () {
+  /*setInterval(function () {
     var yRotation = myCuboid.rotateY();
     myCuboid.rotateX(0.5)
       .rotateY(1)
@@ -24,5 +24,5 @@ $(document).ready(function () {
     }
 
     myCuboid.scale(1.01, 1.01, 1.01);
-  }, 1000/60);
+}, 1000/60);*/
 });

@@ -27,12 +27,25 @@
     };
 
     var newCuboid = $('<div>').addClass('cuboid')
+      .css('position', 'absolute')
+      .css('width', 0).css('height', 0)
+      .css('overflow', 'visible')
+      .css('top', '50%').css('left', '50%')
+      .css('transform-style', 'preserve-3d')
       .append($('<div>').addClass('front').append($('<div>').addClass('shading')))
       .append($('<div>').addClass('back').append($('<div>').addClass('shading')))
       .append($('<div>').addClass('top').append($('<div>').addClass('shading')))
       .append($('<div>').addClass('bottom').append($('<div>').addClass('shading')))
       .append($('<div>').addClass('left').append($('<div>').addClass('shading')))
       .append($('<div>').addClass('right').append($('<div>').addClass('shading')));
+
+    newCuboid.children()
+      .css('position', 'absolute').css('background-color', 'white');
+    newCuboid.children().children()
+      .css('position', 'absolute').css('width', '100%').css('height', '100%')
+      .css('background-color', 'black').each(function (index) {
+        $(this).fadeTo(0, index / 10);
+      });
 
     var updateSizes = function () {
       newCuboid.children('.front, .back')
@@ -65,6 +78,15 @@
           'rotateY(' + transforms.ry + 'deg)' +
           'rotateZ(' + transforms.rz + 'deg)'
       }());
+    };
+
+    newCuboid.color = function (c) {
+      if (c !== undefined) {
+        newCuboid.children().css('background-color', c);
+      } else {
+        return newCuboid.children().css('background-color');
+      }
+      return newCuboid;
     };
 
     newCuboid.width = function (num) {

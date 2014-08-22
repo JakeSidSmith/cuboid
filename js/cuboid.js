@@ -32,12 +32,12 @@
       .css('overflow', 'visible')
       .css('top', '50%').css('left', '50%')
       .css('transform-style', 'preserve-3d')
-      .append($('<div>').addClass('front').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('back').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('top').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('bottom').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('left').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('right').append($('<div>').addClass('shading')));
+      .append($('<div>').addClass('front').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('back').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('top').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('bottom').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('left').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
+      .append($('<div>').addClass('right').css('background-size', '100% 100%').append($('<div>').addClass('shading')));
 
     newCuboid.children()
       .css('position', 'absolute').css('background-color', 'white');
@@ -89,7 +89,52 @@
       return newCuboid;
     };
 
-    newCuboid.width = function (num) {
+    var colorSide = function (side, c) {
+      return function (c) {
+        if (c !== undefined) {
+          newCuboid.children(side).css('background-color', c);
+        } else {
+          return newCuboid.children(side).css('background-color');
+        }
+        return newCuboid;
+      }
+    };
+
+    newCuboid.colorFront = colorSide('.front');
+    newCuboid.colorBack = colorSide('.back');
+    newCuboid.colorLeft = colorSide('.left');
+    newCuboid.colorRight = colorSide('.right');
+    newCuboid.colorTop = colorSide('.top');
+    newCuboid.colorBottom = colorSide('.bottom');
+
+    newCuboid.texture = function (url) {
+      if (url !== undefined) {
+        newCuboid.children().css('background-image', 'url(' + url + ')');
+      } else {
+        return newCuboid.children().css('background-image');
+      }
+      return newCuboid;
+    };
+
+    var textureSide = function (side, url) {
+      return function (url) {
+        if (url !== undefined) {
+          newCuboid.children(side).css('background-image', 'url(' + url + ')');
+        } else {
+          return newCuboid.children(side).css('background-image');
+        }
+        return newCuboid;
+      };
+    };
+
+    newCuboid.textureFront = textureSide('.front');
+    newCuboid.textureBack = textureSide('.back');
+    newCuboid.textureLeft = textureSide('.left');
+    newCuboid.textureRight = textureSide('.right');
+    newCuboid.textureTop = textureSide('.top');
+    newCuboid.textureBottom = textureSide('.bottom');
+
+    newCuboid.width = function width (num) {
       if (num !== undefined) {
         transforms.w = num;
       } else {

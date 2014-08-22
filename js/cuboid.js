@@ -95,7 +95,7 @@
       return newCuboid;
     };
 
-    var colorSide = function (side, c) {
+    var colorSide = function (side) {
       return function (c) {
         if (c !== undefined) {
           newCuboid.children(side).css('background-color', c);
@@ -103,7 +103,7 @@
           return newCuboid.children(side).css('background-color');
         }
         return newCuboid;
-      }
+      };
     };
 
     newCuboid.colorFront = colorSide('.front');
@@ -122,7 +122,7 @@
       return newCuboid;
     };
 
-    var textureSide = function (side, url) {
+    var textureSide = function (side) {
       return function (url) {
         if (url !== undefined) {
           newCuboid.children(side).css('background-image', 'url(' + url + ')');
@@ -139,36 +139,6 @@
     newCuboid.textureRight = textureSide('.right');
     newCuboid.textureTop = textureSide('.top');
     newCuboid.textureBottom = textureSide('.bottom');
-
-    newCuboid.width = function width (num) {
-      if (num !== undefined) {
-        transforms.w = num;
-      } else {
-        return transforms.w;
-      }
-      updateSizes();
-      return newCuboid;
-    };
-
-    newCuboid.height = function (num) {
-      if (num !== undefined) {
-        transforms.h = num;
-      } else {
-        return transforms.h;
-      }
-      updateSizes();
-      return newCuboid;
-    };
-
-    newCuboid.depth = function (num) {
-      if (num !== undefined) {
-        transforms.d = num;
-      } else {
-        return transforms.d;
-      }
-      updateSizes();
-      return newCuboid;
-    };
 
     newCuboid.size = function (w, h, d) {
       if (w === undefined && h === undefined && d === undefined) {
@@ -212,38 +182,38 @@
       return newCuboid;
     };
 
-    newCuboid.rotateX = function (num) {
-      if (num !== undefined) {
-        transforms.rx += num;
-        transforms.rx %= 360;
-      } else {
-        return transforms.rx;
-      }
-      updateTransforms();
-      return newCuboid;
+    var dimension = function (side) {
+      return function (num) {
+        if (num !== undefined) {
+          transforms[side] = num;
+        } else {
+          return transforms[side];
+        }
+        updateSizes();
+        return newCuboid;
+      };
     };
 
-    newCuboid.rotateY = function (num) {
-      if (num !== undefined) {
-        transforms.ry += num;
-        transforms.ry %= 360;
-      } else {
-        return transforms.ry;
-      }
-      updateTransforms();
-      return newCuboid;
+    newCuboid.width = dimension('w');
+    newCuboid.height = dimension('h');
+    newCuboid.depth = dimension('d');
+
+    var addRotation = function (angle) {
+      return function (num) {
+        if (num !== undefined) {
+          transforms[angle] += num;
+          transforms[angle] %= 360;
+        } else {
+          return transforms[angle];
+        }
+        updateTransforms();
+        return newCuboid;
+      };
     };
 
-    newCuboid.rotateZ = function (num) {
-      if (num !== undefined) {
-        transforms.rz += num;
-        transforms.rz %= 360;
-      } else {
-        return transforms.rz;
-      }
-      updateTransforms();
-      return newCuboid;
-    };
+    newCuboid.rotateX = addRotation('rx');
+    newCuboid.rotateY = addRotation('ry');
+    newCuboid.rotateZ = addRotation('rz');
 
     newCuboid.rotationX = function (num) {
       if (num !== undefined) {

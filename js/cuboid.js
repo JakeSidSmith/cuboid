@@ -140,48 +140,6 @@
     newCuboid.textureTop = textureSide('.top');
     newCuboid.textureBottom = textureSide('.bottom');
 
-    newCuboid.size = function (w, h, d) {
-      if (w === undefined && h === undefined && d === undefined) {
-        return {
-          width: transforms.w,
-          height: transforms.h,
-          depth: transforms.d
-        };
-      }
-      if (w !== undefined) {
-        transforms.w = w;
-      }
-      if (h !== undefined) {
-        transforms.h = h;
-      }
-      if (d !== undefined) {
-        transforms.d = d;
-      }
-      updateSizes();
-      return newCuboid;
-    };
-
-    newCuboid.scale = function (w, h, d) {
-      if (w === undefined && h === undefined && d === undefined) {
-        return {
-          width: transforms.w,
-          height: transforms.h,
-          depth: transforms.d
-        };
-      }
-      if (w !== undefined) {
-        transforms.w *= w;
-      }
-      if (h !== undefined) {
-        transforms.h *= h;
-      }
-      if (d !== undefined) {
-        transforms.d *= d;
-      }
-      updateSizes();
-      return newCuboid;
-    };
-
     var setAttribute = function (attr) {
       return function (num) {
         if (num !== undefined) {
@@ -197,21 +155,6 @@
     newCuboid.width = setAttribute('w');
     newCuboid.height = setAttribute('h');
     newCuboid.depth = setAttribute('d');
-
-    newCuboid.rotate = function (rx, ry, rz) {
-      if (rx === undefined && ry === undefined && rz === undefined) {
-        return {
-          x: transforms.rx,
-          y: transforms.ry,
-          z: transforms.rz
-        };
-      }
-      transforms.rx += rx !== undefined ? rx : 0;
-      transforms.ry += ry !== undefined ? ry : 0;
-      transforms.rz += rz !== undefined ? rz : 0;
-      updateTransforms();
-      return newCuboid;
-    };
 
     var addRotation = function (angle) {
       return function (num) {
@@ -229,21 +172,6 @@
     newCuboid.rotateX = addRotation('rx');
     newCuboid.rotateY = addRotation('ry');
     newCuboid.rotateZ = addRotation('rz');
-
-    newCuboid.rotation = function (rx, ry, rz) {
-      if (rx === undefined && ry === undefined && rz === undefined) {
-        return {
-          x: transforms.rx,
-          y: transforms.ry,
-          z: transforms.rz
-        };
-      }
-      transforms.rx = rx !== undefined ? rx : 0;
-      transforms.ry = ry !== undefined ? ry : 0;
-      transforms.rz = rz !== undefined ? rz : 0;
-      updateTransforms();
-      return newCuboid;
-    };
 
     var setRotation = function (angle) {
       return function (num) {
@@ -294,6 +222,78 @@
       } else {
         return transforms.z;
       }
+      updateTransforms();
+      return newCuboid;
+    };
+
+    newCuboid.size = function (w, h, d) {
+      if (w === undefined && h === undefined && d === undefined) {
+        return {
+          width: transforms.w,
+          height: transforms.h,
+          depth: transforms.d
+        };
+      }
+      if (w !== undefined) {
+        transforms.w = w;
+      }
+      if (h !== undefined) {
+        transforms.h = h;
+      }
+      if (d !== undefined) {
+        transforms.d = d;
+      }
+      updateSizes();
+      return newCuboid;
+    };
+
+    newCuboid.scale = function (w, h, d) {
+      if (w === undefined && h === undefined && d === undefined) {
+        return {
+          width: transforms.w,
+          height: transforms.h,
+          depth: transforms.d
+        };
+      }
+      if (w !== undefined) {
+        transforms.w *= w;
+      }
+      if (h !== undefined) {
+        transforms.h *= h;
+      }
+      if (d !== undefined) {
+        transforms.d *= d;
+      }
+      updateSizes();
+      return newCuboid;
+    };
+
+    newCuboid.rotate = function (rx, ry, rz) {
+      if (rx === undefined && ry === undefined && rz === undefined) {
+        return {
+          x: transforms.rx,
+          y: transforms.ry,
+          z: transforms.rz
+        };
+      }
+      transforms.rx += rx !== undefined ? rx : 0;
+      transforms.ry += ry !== undefined ? ry : 0;
+      transforms.rz += rz !== undefined ? rz : 0;
+      updateTransforms();
+      return newCuboid;
+    };
+
+    newCuboid.rotation = function (rx, ry, rz) {
+      if (rx === undefined && ry === undefined && rz === undefined) {
+        return {
+          x: transforms.rx,
+          y: transforms.ry,
+          z: transforms.rz
+        };
+      }
+      transforms.rx = rx !== undefined ? rx : 0;
+      transforms.ry = ry !== undefined ? ry : 0;
+      transforms.rz = rz !== undefined ? rz : 0;
       updateTransforms();
       return newCuboid;
     };

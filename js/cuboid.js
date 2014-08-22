@@ -182,21 +182,21 @@
       return newCuboid;
     };
 
-    var dimension = function (side) {
+    var setAttribute = function (attr) {
       return function (num) {
         if (num !== undefined) {
-          transforms[side] = num;
+          transforms[attr] = num;
         } else {
-          return transforms[side];
+          return transforms[attr];
         }
         updateSizes();
         return newCuboid;
       };
     };
 
-    newCuboid.width = dimension('w');
-    newCuboid.height = dimension('h');
-    newCuboid.depth = dimension('d');
+    newCuboid.width = setAttribute('w');
+    newCuboid.height = setAttribute('h');
+    newCuboid.depth = setAttribute('d');
 
     newCuboid.rotate = function (rx, ry, rz) {
       if (rx === undefined && ry === undefined && rz === undefined) {
@@ -262,35 +262,9 @@
     newCuboid.rotationY = setRotation('ry');
     newCuboid.rotationZ = setRotation('rz');
 
-    newCuboid.translateX = function (num) {
-      if (num !== undefined) {
-        transforms.x = num;
-      } else {
-        return transforms.x;
-      }
-      updateTransforms();
-      return newCuboid;
-    };
-
-    newCuboid.translateY = function (num) {
-      if (num !== undefined) {
-        transforms.y = num;
-      } else {
-        return transforms.y;
-      }
-      updateTransforms();
-      return newCuboid;
-    };
-
-    newCuboid.translateZ = function (num) {
-      if (num !== undefined) {
-        transforms.z = num;
-      } else {
-        return transforms.z;
-      }
-      updateTransforms();
-      return newCuboid;
-    };
+    newCuboid.translateX = setAttribute('x');
+    newCuboid.translateY = setAttribute('y');
+    newCuboid.translateZ = setAttribute('z');
 
     newCuboid.moveX = function (num) {
       if (num !== undefined) {

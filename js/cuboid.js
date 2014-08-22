@@ -26,21 +26,27 @@
       rz: rz || 0
     };
 
+    var newSide = function (side) {
+      return $('<div>').addClass(side)
+        .css('background-size', '100% 100%')
+        .css('background-color', 'white')
+        .css('position', 'absolute')
+        .append($('<div>').addClass('shading'));
+    };
+
     var newCuboid = $('<div>').addClass('cuboid')
       .css('position', 'absolute')
       .css('width', 0).css('height', 0)
       .css('overflow', 'visible')
       .css('top', '50%').css('left', '50%')
       .css('transform-style', 'preserve-3d')
-      .append($('<div>').addClass('front').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('back').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('top').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('bottom').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('left').css('background-size', '100% 100%').append($('<div>').addClass('shading')))
-      .append($('<div>').addClass('right').css('background-size', '100% 100%').append($('<div>').addClass('shading')));
+      .append(newSide('front'))
+      .append(newSide('back'))
+      .append(newSide('left'))
+      .append(newSide('right'))
+      .append(newSide('top'))
+      .append(newSide('bottom'));
 
-    newCuboid.children()
-      .css('position', 'absolute').css('background-color', 'white');
     newCuboid.children().children()
       .css('position', 'absolute').css('width', '100%').css('height', '100%')
       .css('background-color', 'black').each(function (index) {

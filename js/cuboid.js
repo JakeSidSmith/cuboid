@@ -194,37 +194,21 @@
     newCuboid.translateY = setAttribute('y');
     newCuboid.translateZ = setAttribute('z');
 
-    newCuboid.moveX = function (num) {
-      if (num !== undefined) {
-        transforms.x += num;
-      } else {
-        return transforms.x;
-      }
-      updateTransforms();
-      return newCuboid;
+    var moveInDirection = function (direction) {
+      return function (num) {
+        if (num !== undefined) {
+          transforms[direction] += num;
+        } else {
+          return transforms[direction];
+        }
+        updateTransforms();
+        return newCuboid;
+      };
     };
 
-
-    newCuboid.moveY = function (num) {
-      if (num !== undefined) {
-        transforms.y += num;
-      } else {
-        return transforms.y;
-      }
-      updateTransforms();
-      return newCuboid;
-    };
-
-
-    newCuboid.moveZ = function (num) {
-      if (num !== undefined) {
-        transforms.z += num;
-      } else {
-        return transforms.z;
-      }
-      updateTransforms();
-      return newCuboid;
-    };
+    newCuboid.moveX = moveInDirection('x');
+    newCuboid.moveY = moveInDirection('y');
+    newCuboid.moveZ = moveInDirection('z');
 
     newCuboid.size = function (w, h, d) {
       if (w === undefined && h === undefined && d === undefined) {

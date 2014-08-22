@@ -53,7 +53,7 @@
         $(this).fadeTo(0, index / 10);
       });
 
-    var updateSizes = function () {
+    newCuboid.applySizes = function () {
       newCuboid.children('.front, .back')
         .css('width', transforms.w).css('height', transforms.h);
       newCuboid.children('.left, .right')
@@ -75,15 +75,22 @@
         .css('transform', 'translate3d(' + [-transforms.w / 2 + 'px', -transforms.d / 2 + transforms.h / 2 + 'px', 0 + 'px'].join(',') + ') rotateX(-90deg)');
     }
 
-    updateSizes();
+    newCuboid.applySizes();
 
-    var updateTransforms = function () {
+    newCuboid.applyTransforms = function () {
       newCuboid.css('transform', function () {
         return 'translate3d(' + [transforms.x + 'px', transforms.y + 'px', transforms.z + 'px'].join(',') + ')' +
           'rotateX(' + transforms.rx + 'deg)' +
           'rotateY(' + transforms.ry + 'deg)' +
           'rotateZ(' + transforms.rz + 'deg)'
       }());
+    };
+
+    newCuboid.applyTransforms();
+
+    newCuboid.apply = function () {
+      newCuboid.applySizes();
+      newCuboid.applyTransforms();
     };
 
     newCuboid.color = function (c) {
@@ -147,7 +154,6 @@
         } else {
           return transforms[attr];
         }
-        updateSizes();
         return newCuboid;
       };
     };
@@ -164,7 +170,6 @@
         } else {
           return transforms[angle];
         }
-        updateTransforms();
         return newCuboid;
       };
     };
@@ -181,7 +186,6 @@
         } else {
           return transforms[angle];
         }
-        updateTransforms();
         return newCuboid;
       };
     };
@@ -201,7 +205,6 @@
         } else {
           return transforms[direction];
         }
-        updateTransforms();
         return newCuboid;
       };
     };
@@ -227,7 +230,6 @@
       if (d !== undefined) {
         transforms.d = d;
       }
-      updateSizes();
       return newCuboid;
     };
 
@@ -248,7 +250,6 @@
       if (d !== undefined) {
         transforms.d *= d;
       }
-      updateSizes();
       return newCuboid;
     };
 
@@ -263,7 +264,6 @@
       transforms.rx += rx !== undefined ? rx : 0;
       transforms.ry += ry !== undefined ? ry : 0;
       transforms.rz += rz !== undefined ? rz : 0;
-      updateTransforms();
       return newCuboid;
     };
 
@@ -278,7 +278,6 @@
       transforms.rx = rx !== undefined ? rx : 0;
       transforms.ry = ry !== undefined ? ry : 0;
       transforms.rz = rz !== undefined ? rz : 0;
-      updateTransforms();
       return newCuboid;
     };
 
@@ -293,7 +292,6 @@
       transforms.x += x !== undefined ? x : 0;
       transforms.y += y !== undefined ? y : 0;
       transforms.z += z !== undefined ? z : 0;
-      updateTransforms();
       return newCuboid;
     };
 
@@ -308,7 +306,6 @@
       transforms.x = x !== undefined ? x : 0;
       transforms.y = y !== undefined ? y : 0;
       transforms.z = z !== undefined ? z : 0;
-      updateTransforms();
       return newCuboid;
     };
 

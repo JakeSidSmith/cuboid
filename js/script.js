@@ -3,14 +3,11 @@
 var myCuboid;
 
 $(document).ready(function () {
-  myCuboid = cuboid.newCuboid(0, 0, 0, 100, 100, 100);
+  myCuboid = cuboid.newCuboid();
 
-  /*myCuboid.texture('img/grass-side.png')
+  myCuboid.texture('img/grass-side.png')
     .textureTop('img/grass-top.png')
-    .textureBottom('img/grass-bottom.png');*/
-
-  /*myCuboid.colorFront('red')
-    .colorBack('blue');*/
+    .textureBottom('img/grass-bottom.png');
 
   $('.camera').append(myCuboid);
 
@@ -32,5 +29,6 @@ $(document).ready(function () {
     }
 
     myCuboid.scale(1.01, 1.01, 1.01);*/
-}, 1000/60);
+    myCuboid.apply();
+  }, 1000/60);
 });
